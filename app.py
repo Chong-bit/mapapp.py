@@ -32,7 +32,18 @@ predefined_data = [
     {"Name": "Kek Lok Si Temple", "Description": "Buddhist temple in Penang", "Latitude": 5.3566, "Longitude": 100.2736},
     {"Name": "Langkawi Sky Bridge", "Description": "Scenic bridge with mountain views", "Latitude": 6.3721, "Longitude": 99.6656},
     {"Name": "Taman Negara", "Description": "Rainforest national park", "Latitude": 4.3833, "Longitude": 102.4167},
-    {"Name": "Sunway Lagoon", "Description": "Popular theme park in Selangor", "Latitude": 3.0738, "Longitude": 101.6078}
+    {"Name": "Sunway Lagoon", "Description": "Popular theme park in Selangor", "Latitude": 3.0738, "Longitude": 101.6078},
+    # Additional attractions
+    {"Name": "Gunung Mulu National Park", "Description": "UNESCO World Heritage Site with caves and karst formations", "Latitude": 4.0545, "Longitude": 114.8125},
+    {"Name": "Perhentian Islands", "Description": "Beautiful islands with crystal-clear waters", "Latitude": 5.9167, "Longitude": 102.7333},
+    {"Name": "Sipadan Island", "Description": "World-class diving site in Sabah", "Latitude": 4.1141, "Longitude": 118.6280},
+    {"Name": "Batu Caves", "Description": "Limestone caves and Hindu temple", "Latitude": 3.2379, "Longitude": 101.6831},
+    {"Name": "Mount Kinabalu", "Description": "Highest peak in Southeast Asia", "Latitude": 6.0759, "Longitude": 116.5580},
+    {"Name": "Penang Hill", "Description": "Hill with natural beauty and a funicular railway", "Latitude": 5.4333, "Longitude": 100.2731},
+    {"Name": "Putrajaya Mosque", "Description": "Modern mosque with unique architecture", "Latitude": 2.9408, "Longitude": 101.6929},
+    {"Name": "Desaru Coast", "Description": "Beautiful beach destination in Johor", "Latitude": 1.5667, "Longitude": 104.2500},
+    {"Name": "Malacca River Cruise", "Description": "Scenic boat ride along the Malacca River", "Latitude": 2.1971, "Longitude": 102.2521},
+    {"Name": "Cameron Highlands", "Description": "Cool hill station known for tea plantations", "Latitude": 4.4700, "Longitude": 101.3800}
 ]
 
 # Categorize each attraction

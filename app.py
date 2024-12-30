@@ -1,5 +1,4 @@
 import csv
-import folium
 from streamlit_folium import st_folium
 import streamlit as st
 

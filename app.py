@@ -16,7 +16,99 @@ def categorize_attraction_type(name, description):
         return "Natural"
 
     # Amusement parks
+    elif any(keyword in name or keyword in description f%%writefile app.py
+import folium
+from streamlit_folium import st_folium
+import streamlit as st
+
+# Function to categorize the attraction type based on name and description
+def categorize_attraction_type(name, description):
+    name = name.lower()  # Convert name to lowercase for easier matching
+    description = description.lower()  # Convert description to lowercase for easier matching
+
+    # Historical sites
+    if any(keyword in name or keyword in description for keyword in ["temple", "fort", "palace", "historical", "monument", "museum", "ruins", "castle"]):
+        return "Historical"
+
+    # Natural wonders
+    elif any(keyword in name or keyword in description for keyword in ["rainforest", "beach", "mountain", "island", "park", "cave"]):
+        return "Natural"
+
+    # Amusement parks
     elif any(keyword in name or keyword in description for keyword in ["amusement", "theme park", "ride", "bridge", "towers", "lagoon"]):
+        return "Amusement"
+
+    # Default to Unknown
+    else:
+        return "Unknown"
+
+# Predefined tourist attractions
+attractions = [
+    {"Name": "Kuala Lumpur Tower", "Description": "A tower offering panoramic city views.", "Latitude": 3.1526, "Longitude": 101.7038},
+    {"Name": "Petronas Twin Towers", "Description": "Iconic skyscrapers and a symbol of Malaysia.", "Latitude": 3.1578, "Longitude": 101.7120},
+    {"Name": "Langkawi Sky Bridge", "Description": "Suspended bridge with stunning views.", "Latitude": 6.3811, "Longitude": 99.8406},
+    {"Name": "Penang Hill", "Description": "A hill with natural beauty and a funicular railway.", "Latitude": 5.4149, "Longitude": 100.2766},
+    {"Name": "Batu Caves", "Description": "Limestone caves and Hindu temple.", "Latitude": 3.2379, "Longitude": 101.6831},
+]
+
+# Add type to each attraction
+for attraction in attractions:
+    attraction["Type"] = categorize_attraction_type(attraction["Name"], attraction["Description"])
+
+# Streamlit app title
+st.title("Tourist Map of Malaysia")
+
+# Initialize the map
+map_center = [4.2105, 101.9758]  # Center of Malaysia
+tourist_map = folium.Map(location=map_center, zoom_start=6)
+
+# Create feature groups for different types of attractions
+layers = {
+    "Historical": folium.FeatureGroup(name="Historical Sites"),
+    "Natural": folium.FeatureGroup(name="Natural Wonders"),
+    "Amusement": folium.FeatureGroup(name="Amusement Parks"),
+    "Unknown": folium.FeatureGroup(name="Unknown Attractions"),
+}
+
+# Marker colors for each type
+marker_colors = {
+    "Historical": "blue",
+    "Natural": "green",
+    "Amusement": "red",
+    "Unknown": "gray",
+}
+
+# Add markers for each attraction
+for attraction in attractions:
+    attraction_type = attraction["Type"]
+    popup_content = f"<b>{attraction['Name']}</b><br>{attraction['Description']}"
+    folium.Marker(
+        location=[attraction["Latitude"], attraction["Longitude"]],
+        popup=folium.Popup(popup_content, max_width=300),
+        tooltip=attraction["Name"],
+        icon=folium.Icon(color=marker_colors.get(attraction_type, "gray"))
+    ).add_to(layers[attraction_type])
+
+# Add layers to map
+for layer_name, layer_group in layers.items():
+    layer_group.add_to(tourist_map)
+
+# Add layer control
+folium.LayerControl().add_to(tourist_map)
+
+# Add total attractions label on the map
+total_attractions = len(attractions)
+folium.Marker(
+    location=[6.5, 105.5],  # Coordinates where you want the label
+    icon=folium.DivIcon(html=f'<div style="font-size: 16px; color: black;">Total Attractions: {total_attractions}</div>')
+).add_to(tourist_map)
+
+# Display the map
+st_map = st_folium(tourist_map, width=700, height=500)
+
+# Show total attractions count
+st.write(f"**Total Attractions:** {total_attractions}")
+or keyword in ["amusement", "theme park", "ride", "bridge", "towers", "lagoon"]):
         return "Amusement"
 
     # Default to Unknown

@@ -16,7 +16,7 @@ def categorize_attraction_type(name, description):
         return "Natural"
 
     # Amusement parks
-    elif any(keyword in name or keyword in description f%%writefile app.py
+    elif any(keyword in name or keyword in description
 import folium
 from streamlit_folium import st_folium
 import streamlit as st
